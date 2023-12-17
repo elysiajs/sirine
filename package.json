@@ -21,6 +21,7 @@
   ],
   "scripts": {
     "dev": "bun --watch example/index.ts",
+    "test": "bun test",
     "build": "rimraf dist && bun run build:cjs && bun run build:bun",
     "build:bun": "bun build src/index.ts --minify --outfile=dist/index.mjs",
     "build:cjs": "tsc --project tsconfig.cjs.json",
