@@ -1,0 +1,55 @@
+{
+  "name": "sirine",
+  "description": "Export function as endpoint",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "saltyAom",
+    "url": "https://github.com/SaltyAom",
+    "email": "saltyaom@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elysiajs/sirine"
+  },
+  "homepage": "https://github.com/elysiajs/sirine",
+  "bugs": "https://github.com/elysiajs/sirine/issues",
+  "keywords": [
+    "sirine",
+    "elysia",
+    "web server"
+  ],
+  "scripts": {
+    "dev": "bun --watch example/index.ts",
+    "build": "rimraf dist && bun run build:cjs && bun run build:bun",
+    "build:bun": "bun build src/index.ts --minify --outfile=dist/index.mjs",
+    "build:cjs": "tsc --project tsconfig.cjs.json",
+    "release": "npm run build && npm run test && npm publish"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "bun": "./dist/index.mjs",
+      "node": "./dist/index.js",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "dependencies": {
+    "memoirist": "0.1.4"
+  },
+  "peerDependencies": {
+    "typescript": ">= 5.0.0",
+    "@whatwg-node/server": ">= 0.9.0"
+  },
+  "devDependencies": {
+    "@whatwg-node/server": "^0.9.22",
+    "bun-types": "^1.0.15",
+    "rimraf": "4.4.1",
+    "zod": "^3.22.4"
+  }
+}
